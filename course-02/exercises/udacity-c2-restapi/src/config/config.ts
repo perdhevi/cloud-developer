@@ -1,19 +1,20 @@
+import { internalconfig } from './internal';
 export const config = {
   "dev": {
-    "username": "postgres",
-    "password": "",
-    "database": "udagramperdhevidev",
-    "host": "udagramperdhevidev.cznbrnyd2yii.us-east-2.rds.amazonaws.com",
-    "dialect": "postgres",
-    "aws_region": "us-east-2",
-    "aws_profile": "default",
-    "aws_media_bucket": "udagram-perdhevi-dev"
+    "username": internalconfig.dev.username,
+    "password": internalconfig.dev.password,
+    "database": internalconfig.dev.database,
+    "host": internalconfig.dev.host,
+    "dialect": internalconfig.dev.dialect,
+    "aws_region": internalconfig.dev.aws_region,
+    "aws_profile": internalconfig.dev.aws_profile,
+    "aws_media_bucket": internalconfig.dev.aws_media_bucket
   },
   "prod": {
-    "username": "",
-    "password": "",
-    "database": "udagram_prod",
-    "host": "",
-    "dialect": "postgres"
+    "username": internalconfig.prod.username,
+    "password": internalconfig.prod.password,
+    "database": internalconfig.prod.database,
+    "host": internalconfig.prod.host,
+    "dialect": internalconfig.prod.dialect
   }
 }

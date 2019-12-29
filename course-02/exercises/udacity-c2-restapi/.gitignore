@@ -44,3 +44,4 @@ venv/
 
 #exclude the config
 src/config/config.ts
+src/config/internal.ts

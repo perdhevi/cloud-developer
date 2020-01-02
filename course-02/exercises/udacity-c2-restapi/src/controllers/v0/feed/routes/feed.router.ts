@@ -18,13 +18,32 @@ router.get('/', async (req: Request, res: Response) => {
 
 //@TODO
 //Add an endpoint to GET a specific resource by Primary Key
+router.get('/:id', async (req:Request, res: Response) => {
+    let { id } = req.params;
+    const item = await FeedItem.findByPk(id);
+    res.send(item);
+});
+
 
 // update a specific resource
 router.patch('/:id', 
     requireAuth, 
     async (req: Request, res: Response) => {
         //@TODO try it yourself
-        res.send(500).send("not implemented")
+        let { id } = req.params;
+        const caption = req.body.caption;
+        const fileName = req.body.url;
+    
+        FeedItem.findByPk(id).then( feed =>{ 
+            if(feed){
+                feed.caption = caption;
+                feed.url = fileName;
+
+                res.send(feed.save());
+            }else{
+                res.send(500).send("not implemented")
+            }
+    })
 });
 
 
@@ -43,9 +62,9 @@ router.get('/signed-url/:fileName',
 router.post('/', 
     requireAuth, 
     async (req: Request, res: Response) => {
-    const caption = req.body.caption;
-    const fileName = req.body.url;
-
+        const caption = req.body.caption;
+        const fileName = req.body.url;
+    
     // check Caption is valid
     if (!caption) {
         return res.status(400).send({ message: 'Caption is required or malformed' });

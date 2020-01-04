@@ -16,7 +16,7 @@ export const config = {
     "host": process.env.POSTGRES_HOST,
     "dialect,": process.env.POSTGRES_DIALECT
   },
-  "jwt" {
+  "jwt": {
     "secret": process.env.JWT_SECRET
   }
 
